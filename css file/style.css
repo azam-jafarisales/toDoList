@@ -1,0 +1,55 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    width: 50%;
+    background-color: aqua;
+    margin: 150px auto;
+    padding: 30px;
+
+}
+
+.wrapper div:first-child {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.inp {
+    width: 75%;
+    height: 30px;
+}
+
+.addBtn {
+    width: 20%;
+
+}
+
+.items {
+
+    padding: 10px 0;
+
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+#checkbox {
+    margin-right: 5px;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
