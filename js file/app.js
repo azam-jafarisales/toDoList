@@ -3,7 +3,7 @@ const addBtn = document.querySelector('.addBtn');
 const items = document.querySelector('.items');
 showtasks();
 addBtn.addEventListener('click', addItem);
-// addEventListener('dblclick', saveEdit);
+addEventListener('dblclick', saveEdit);
 
 
 function addItem() {
@@ -72,7 +72,6 @@ function showtasks() {
    let checkboxes = document.querySelectorAll('input[type=checkbox]');
    let editBtns = document.querySelectorAll('i.bxs-pencil')
    let closeBtns=document.querySelectorAll('i.bx-x');
-   console.log(closeBtns)
    checkboxes.forEach(item => {
       item.addEventListener('change', changeTaskStatus)
    })
@@ -92,14 +91,12 @@ function changeTaskStatus() {
          item.done = !item.done;
       }
    })
-   // console.log(this.dataset.id);
    localStorage.setItem('case', JSON.stringify(tasks));
    showtasks();
 
 }
 
 function showEditInput() {
-   console.log(this)
    let p = this.parentElement.parentElement.children[0].children[1];
    let editInp = document.createElement('input');
    editInp.setAttribute('value', p.innerText)
@@ -115,8 +112,7 @@ function saveEdit() {
    let text = document.createTextNode(findInp.value);
    p.setAttribute('data-id' , findInp.dataset.id)
    p.appendChild(text);
-   findInp.parentElement.replaceChild(p, findInp.parentElement.children[1])
-   console.log(p);
+   findInp.parentElement.replaceChild(p, findInp.parentElement.children[1]);
 
    let tasks = readLocalstorage();
    tasks.forEach(item => {
@@ -129,6 +125,5 @@ function saveEdit() {
 }
 
 function deleteTask(){
-   console.log(this.parentElement.parentElement)
    this.parentElement.parentElement.remove();
 }
