@@ -3,7 +3,7 @@ const addBtn = document.querySelector('.addBtn');
 const items = document.querySelector('.items');
 showtasks();
 addBtn.addEventListener('click', addItem);
-addEventListener('dblclick', saveEdit);
+// addEventListener('dblclick', saveEdit);
 
 
 function addItem() {
@@ -18,7 +18,7 @@ function addItem() {
    }
 }
 
-function readLocalstorage(customArray) {
+function readLocalstorage() {
    let customArray = JSON.parse(localStorage.getItem('case'));
 
    let oldTasksLength;
@@ -71,12 +71,17 @@ function showtasks() {
 
    let checkboxes = document.querySelectorAll('input[type=checkbox]');
    let editBtns = document.querySelectorAll('i.bxs-pencil')
+   let closeBtns=document.querySelectorAll('i.bx-x');
+   console.log(closeBtns)
    checkboxes.forEach(item => {
       item.addEventListener('change', changeTaskStatus)
    })
 
    editBtns.forEach(function (item) {
       item.addEventListener('click', showEditInput)
+   })
+   closeBtns.forEach(function(item){
+      item.addEventListener('click', deleteTask)
    })
 }
 
@@ -119,8 +124,11 @@ function saveEdit() {
          item.text = findInp.value;
       }
    })
-   // console.log(this.dataset.id);
    localStorage.setItem('case', JSON.stringify(tasks));
    showtasks();
 }
 
+function deleteTask(){
+   console.log(this.parentElement.parentElement)
+   this.parentElement.parentElement.remove();
+}
